@@ -23,8 +23,7 @@ function getHumanChoice(){
     
 }
 
-let humanScore = 0
-let computerScore = 0
+
 
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase()
@@ -45,10 +44,24 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection)
+let humanScore = 0
+let computerScore = 0
+
+function playGame(){
+    for (let i = 0; i < 4;i++){
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection)
+    }
+    if (humanScore>computerScore){
+        console.log("human wins with score" + humanScore)
+    } else if (humanScore<computerScore){
+        console.log("human loses with score" + humanScore)
+    } else if (humanScore == computerScore){
+        console.log("its a tie")
+    }
+}
 
 
-
+playGame()
