@@ -10,3 +10,20 @@ function getComputerChoice(){
         return "scissors";
     }
 }
+
+function getHumanChoice(){
+
+        while(true){
+            let choice = prompt("enter your choice rock, paper, or scissors?")
+            if (choice == "rock" || choice == "paper" || choice == "scissors") {
+                return choice;
+                
+            }
+        }
+    
+}
+
+console.log(getHumanChoice())
+console.log(getHumanChoice())
+
+    
