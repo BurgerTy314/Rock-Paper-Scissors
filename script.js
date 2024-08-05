@@ -25,29 +25,47 @@ function getHumanChoice(){
 
 
 
+
 function playRound(humanChoice, computerChoice){
     humanChoice = humanChoice.toLowerCase()
 
+    const result = document.querySelector("#result")
+    const score = document.querySelector("#score")
     
     if ((humanChoice == "rock" && computerChoice == "scissors") ||
         (humanChoice == "paper" && computerChoice == "rock") ||
         (humanChoice == "scissors" && computerChoice == "paper")){
         humanScore++
-        console.log("human won")
+
+        result.textContent = "human won"
     } else if ((humanChoice == "rock" && computerChoice == "paper") ||
                 (humanChoice == "paper" && computerChoice == "scissors") ||
                 (humanChoice == "scissors" && computerChoice == "rock")){
             computerScore++;
-            console.log("computer won");
+            result.textContent = "computer won"
     } else if (humanChoice == computerChoice){
-            console.log("its a draw");
+            result.textContent = "its a draw"
+    }
+
+    score.textContent = "human: " + humanScore + " cpu: " + computerScore;
+    if (humanScore >= 5) {
+        result.textContent = "human won overall"
+        humanScore = 0
+        computerScore = 0
+    } else if (computerScore >= 5) {
+        result.textContent = "computer won overall"
+        humanScore = 0;
+        computerScore = 0;
     }
 }
 
 
 let humanScore = 0
 let computerScore = 0
+let turns = 0
 
+
+/*
 function playGame(){
     for (let i = 0; i < 4;i++){
         const humanSelection = getHumanChoice();
@@ -64,4 +82,28 @@ function playGame(){
 }
 
 
-playGame()
+
+
+
+playGame()  */
+
+
+
+
+
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+
+
+
+rock.addEventListener("click", () => {playRound("rock", getComputerChoice())})
+paper.addEventListener("click", () => {playRound("paper", getComputerChoice())})
+scissors.addEventListener("click", () => {playRound("scissors", getComputerChoice())})
+
+
+
+
+
+
+
